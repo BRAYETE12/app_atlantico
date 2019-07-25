@@ -1,0 +1,1134 @@
+
+<ion-view view-title="Alojamiento mensual">
+  
+  <ion-content>
+  
+  <form role="form" name="form" novalidate>
+
+    <div class="card animated fadeInLeft">
+        <div class="item item-divider situr-header">
+            <h2>Empleados</h2>
+        </div>
+        <div class="card">
+            <div class="item item-divider">
+                <h2>¿Cuántos trabajadores hay por nivel y género?</h2>
+            </div>
+            <div class="list">
+                <div class="item">
+                    <h3>Directivos</h3>
+                </div>
+                <div>
+                    <label class="item item-input item-floating-label column-50">
+                      <span class="input-label" >Hombres</span>
+                      <input type="number" min="0" class="form-control" name="sexo" ng-model="cargo(1).hombres" placeholder="Hombres" ng-required="true">
+                    </label>
+               
+                    <label class="item item-input item-floating-label column-50">
+                      <span class="input-label" >Mujeres</span>
+                      <input type="number" min="0" class="form-control" name="sexof" ng-model="cargo(1).mujeres" placeholder="Mujeres" ng-required="true"/>
+                    </label>
+                </div>
+                <div class="item">
+                    <h3>Mandos medios</h3>
+                </div>
+                <div>
+                    <label class="item item-input item-floating-label column-50">
+                      <span class="input-label" >Hombres</span>
+                      <input type="number" min="0" name="sexo2" ng-model="cargo(2).hombres" placeholder="Hombres" ng-required="true">
+                    </label>
+               
+                    <label class="item item-input item-floating-label column-50">
+                      <span class="input-label" >Mujeres</span>
+                      <input type="number" min="0" name="sexo2f" ng-model="cargo(2).mujeres" placeholder="Mujeres" ng-required="true"/>
+                    </label>
+                </div>
+                <div class="item">
+                    <h3>Operativo</h3>
+                </div>
+                <div>
+                    <label class="item item-input item-floating-label column-50">
+                      <span class="input-label" >Hombres</span>
+                      <input type="number" min="0" class="form-control" name="sexo3" ng-model="cargo(3).hombres" placeholder="Hombres" ng-required="true">
+                    </label>
+               
+                    <label class="item item-input item-floating-label column-50">
+                      <span class="input-label" >Mujeres</span>
+                      <input type="number" min="0" class="form-control" name="sexo3f" ng-model="cargo(3).mujeres" placeholder="Mujeres" ng-required="true"/>
+                    </label>
+                </div>
+                <div class="item">
+                    Total: {{cargo(1).mujeres + cargo(1).hombres + cargo(2).mujeres + cargo(2).hombres + cargo(3).mujeres + cargo(3).hombres }}
+                </div>
+                
+              
+            </div>
+        </div> 
+        
+        <div class="card">
+            <div class="item item-divider">
+                <h2>Por favor clasifique sus empleados en el siguiente rango de edad</h2>
+            </div>
+            <div class="item">
+                Menores de 20 años <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="docea18" ng-model="edadempleado(1,1).docea18" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="docea18f" ng-model="edadempleado(1,0).docea18" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+                Menores de 20 años <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0"  name="docea182" ng-model="edadempleado(2,1).docea18" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="docea182f" ng-model="edadempleado(2,0).docea18" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+                Menores de 20 años <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0"  name="docea183" ng-model="edadempleado(3,1).docea18" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="docea183f" ng-model="edadempleado(3,0).docea18" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Edad','docea18')}}</div>
+            <div class="item">
+                21-30 años <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0"  name="diecinuevea25" ng-model="edadempleado(1,1).diecinuevea25" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="diecinuevea25f" ng-model="edadempleado(1,0).diecinuevea25" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+                21-30 años <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="diecinuevea252" ng-model="edadempleado(2,1).diecinuevea25" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="diecinuevea252f" ng-model="edadempleado(2,0).diecinuevea25" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+                21-30 años <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="diecinuevea253" ng-model="edadempleado(3,1).diecinuevea25" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="diecinuevea253f" ng-model="edadempleado(3,0).diecinuevea25" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Edad','diecinuevea25')}}</div>
+            <div class="item">
+                31-40 años <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="ventiseisa40" ng-model="edadempleado(1,1).ventiseisa40" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="ventiseisa40f" ng-model="edadempleado(1,0).ventiseisa40" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+                31-40 años <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="ventiseisa402" ng-model="edadempleado(2,1).ventiseisa40" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="ventiseisa402f" ng-model="edadempleado(2,0).ventiseisa40" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+                31-40 años <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="ventiseisa403" ng-model="edadempleado(3,1).ventiseisa40" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="ventiseisa403f" ng-model="edadempleado(3,0).ventiseisa40" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Edad','ventiseisa40')}}</div>
+            <div class="item">
+                41-50 años <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="cuarentayunoa64" ng-model="edadempleado(1,1).cuarentayunoa64" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="cuarentayunoa64f" ng-model="edadempleado(1,0).cuarentayunoa64" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+                41-50 años <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="cuarentayunoa642" ng-model="edadempleado(2,1).cuarentayunoa64" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="cuarentayunoa642f" ng-model="edadempleado(2,0).cuarentayunoa64" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+                41-50 años <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="cuarentayunoa643" ng-model="edadempleado(3,1).cuarentayunoa64" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="cuarentayunoa643f" ng-model="edadempleado(3,0).cuarentayunoa64" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Edad','cuarentayunoa64')}}</div>
+            <div class="item">
+                Mayores de 50 años <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="mas65" ng-model="edadempleado(1,1).mas65" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="mas65f" ng-model="edadempleado(1,0).mas65" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Mayores de 50 años <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="mas652" ng-model="edadempleado(2,1).mas65" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="mas652f" ng-model="edadempleado(2,0).mas65" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+                Mayores de 50 años <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="mas653" ng-model="edadempleado(3,1).mas65" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="mas653f" ng-model="edadempleado(3,0).mas65" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Edad','mas65')}}</div>
+            <div class="item">Total empleados: {{totalfila(empleo.Edad,1,1) + totalfila(empleo.Edad,1,0) + totalfila(empleo.Edad,2,1) +totalfila(empleo.Edad,2,0) + totalfila(empleo.Edad,3,1) + totalfila(empleo.Edad,3,0) }}</div>
+
+        </div>
+        
+        <div class="card">
+            <div class="item item-divider">
+                <h2>El título educativo más alto alcanzado por cada nivel es:</h2>
+            </div>
+            <div class="item">
+                Ninguno <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="ninguno" ng-model="eduacionempleado(1,1).ninguno" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="ningunof" ng-model="eduacionempleado(1,0).ninguno" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Ninguno <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="ninguno2" ng-model="eduacionempleado(2,1).ninguno" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="ninguno2f" ng-model="eduacionempleado(2,0).ninguno" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Ninguno <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="ninguno3" ng-model="eduacionempleado(3,1).ninguno" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="ninguno3f" ng-model="eduacionempleado(3,0).ninguno" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Educacion','ninguno')}}</div>
+            <div class="item">
+                Bachiller <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0"name="bachiller" ng-model="eduacionempleado(1,1).bachiller" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="bachillerf" ng-model="eduacionempleado(1,0).bachiller" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Bachiller <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="bachiller2" ng-model="eduacionempleado(2,1).bachiller" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="bachiller2f" ng-model="eduacionempleado(2,0).bachiller" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Bachiller <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="bachiller3" ng-model="eduacionempleado(3,1).bachiller" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="bachiller3f" ng-model="eduacionempleado(3,0).bachiller" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Educacion','bachiller')}}</div>
+            <div class="item">
+                Técnico <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="tecnico" ng-model="eduacionempleado(1,1).tecnico" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="tecnicof" ng-model="eduacionempleado(1,0).tecnico" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Técnico <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="tecnico2" ng-model="eduacionempleado(2,1).tecnico" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="tecnico2f" ng-model="eduacionempleado(2,0).tecnico" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Técnico <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="tecnico3" ng-model="eduacionempleado(3,1).tecnico" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="tecnico3f" ng-model="eduacionempleado(3,0).tecnico" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Educacion','tecnico')}}</div>
+            <div class="item">
+                Tecnológico <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="tecnologo" ng-model="eduacionempleado(1,1).tecnologo" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="tecnologof" ng-model="eduacionempleado(1,0).tecnologo" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Tecnológico <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="tecnologo2" ng-model="eduacionempleado(2,1).tecnologo" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="tecnologo2f" ng-model="eduacionempleado(2,0).tecnologo" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Tecnológico <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="tecnologo3" ng-model="eduacionempleado(3,1).tecnologo" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="tecnologo3f" ng-model="eduacionempleado(3,0).tecnologo" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Educacion','tecnologo')}}</div>
+            <div class="item">
+                Universitario <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="universitario" ng-model="eduacionempleado(1,1).universitario" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="universitariof" ng-model="eduacionempleado(1,0).universitario" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Universitario <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="universitario2" ng-model="eduacionempleado(2,1).universitario" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="universitario2f" ng-model="eduacionempleado(2,0).universitario" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Universitario <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="universitario3" ng-model="eduacionempleado(3,1).universitario" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="universitario3f" ng-model="eduacionempleado(3,0).universitario" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Educacion','universitario')}}</div>
+            <div class="item">
+                Posgrado (Especialización, maestría, doctorado) <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="posgrado" ng-model="eduacionempleado(1,1).posgrado" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="posgradof" ng-model="eduacionempleado(1,0).posgrado" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Posgrado (Especialización, maestría, doctorado) <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="posgrado2" ng-model="eduacionempleado(2,1).posgrado" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="posgrado2f" ng-model="eduacionempleado(2,0).posgrado" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Posgrado  (Especialización, maestría, doctorado) <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="posgrado3" ng-model="eduacionempleado(3,1).posgrado" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="posgrado3f" ng-model="eduacionempleado(3,0).posgrado" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Educacion','posgrado')}}</div>
+            <div class="item">Total empleados: {{ totalfila(empleo.Educacion,1,1) + totalfila(empleo.Educacion,1,0) + totalfila(empleo.Educacion,2,1) +totalfila(empleo.Educacion,2,0) + totalfila(empleo.Educacion,3,1) + totalfila(empleo.Educacion,3,0) }}</div>
+        </div>
+        
+        <div class="card">
+            <div class="item item-divider">
+                <h2>¿Cuántos empleados dominan como segundo idioma el inglés?</h2>
+            </div>
+            <div class="item">
+               <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="sabeningles" ng-model="ingleempleado(1,1).sabeningles" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="sabeninglesf" ng-model="ingleempleado(1,0).sabeningles" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+              <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="sabeningles2" ng-model="ingleempleado(2,1).sabeningles" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="sabeningles2f" ng-model="ingleempleado(2,0).sabeningles" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="sabeningles3" ng-model="ingleempleado(3,1).sabeningles" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="sabeningles3f" ng-model="ingleempleado(3,0).sabeningles" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('ingles','sabeningles')}}</div>
+        </div>
+        
+        <div class="card">
+            <div class="item item-divider">
+                <h2>¿Cuántos trabajadores se encuentran vinculados cómo?</h2>
+            </div>
+            <div class="item">
+                Personal temporal contratado directamente <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="contrato_direto" ng-model="vinculacionempleado(1,1).contrato_direto" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="contrato_diretof" ng-model="vinculacionempleado(1,0).contrato_direto" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Personal temporal contratado directamente <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="contrato_direto2" ng-model="vinculacionempleado(2,1).contrato_direto" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="contrato_direto2f" ng-model="vinculacionempleado(2,0).contrato_direto" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Personal temporal contratado directamente <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="contrato_direto3" ng-model="vinculacionempleado(3,1).contrato_direto" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="contrato_direto3f" ng-model="vinculacionempleado(3,0).contrato_direto" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Vinculacion','contrato_direto')}}</div>
+            <div class="item">
+                Personal temporal contratado a través de agencia <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="personal_agencia" ng-model="vinculacionempleado(1,1).personal_agencia" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="personal_agenciaf" ng-model="vinculacionempleado(1,0).personal_agencia" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Personal temporal contratado a través de agencia <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="personal_agencia2" ng-model="vinculacionempleado(2,1).personal_agencia" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="personal_agencia2f" ng-model="vinculacionempleado(2,0).personal_agencia" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Personal temporal contratado a través de agencia <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="personal_agencia3" ng-model="vinculacionempleado(3,1).personal_agencia" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="personal_agencia3f" ng-model="vinculacionempleado(3,0).personal_agencia" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Vinculacion','personal_agencia')}}</div>
+            <div class="item">
+                Personal permanente <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0"name="personal_permanente" ng-model="vinculacionempleado(1,1).personal_permanente" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="personal_permanentef" ng-model="vinculacionempleado(1,0).personal_permanente" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Personal permanente <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="personal_permanente2" ng-model="vinculacionempleado(2,1).personal_permanente" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="personal_permanente2f" ng-model="vinculacionempleado(2,0).personal_permanente" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Personal permanente <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="personal_permanente3" ng-model="vinculacionempleado(3,1).personal_permanente" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="personal_permanente3f" ng-model="vinculacionempleado(3,0).personal_permanente" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Vinculacion','personal_permanente')}}</div>
+            <div class="item">
+                Trabajador familiar <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0"name="trabajador_familiar" ng-model="vinculacionempleado(1,1).trabajador_familiar" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="trabajador_familiarf" ng-model="vinculacionempleado(1,0).trabajador_familiar" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Trabajador familiar <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="trabajador_familiar2" ng-model="vinculacionempleado(2,1).trabajador_familiar" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="trabajador_familiar2f" ng-model="vinculacionempleado(2,0).trabajador_familiar" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Trabajador familiar <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="trabajador_familiar3" ng-model="vinculacionempleado(3,1).trabajador_familiar" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="trabajador_familiar3f" ng-model="vinculacionempleado(3,0).trabajador_familiar" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Vinculacion','trabajador_familiar')}}</div>
+            <div class="item">
+                Propietario/Socio <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="propietario" ng-model="vinculacionempleado(1,1).propietario" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="propietariof" ng-model="vinculacionempleado(1,0).propietario" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Propietario/Socio <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="propietario2" ng-model="vinculacionempleado(2,1).propietario" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="propietario2f" ng-model="vinculacionempleado(2,0).propietario" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Propietario/Socio <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0"  name="propietario3" ng-model="vinculacionempleado(3,1).propietario" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="propietario3f" ng-model="vinculacionempleado(3,0).propietario" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Vinculacion','propietario')}}</div>
+            <div class="item">
+                Aprendiz o estudiante por convenio <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="aprendiz" ng-model="vinculacionempleado(1,1).aprendiz" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0"  name="aprendizf" ng-model="vinculacionempleado(1,0).aprendiz" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Aprendiz o estudiante por convenio <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="aprendiz2" ng-model="vinculacionempleado(2,1).aprendiz" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="aprendiz2f" ng-model="vinculacionempleado(2,0).aprendiz" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Aprendiz o estudiante por convenio <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0"  name="aprendiz3" ng-model="vinculacionempleado(3,1).aprendiz" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="aprendiz3f" ng-model="vinculacionempleado(3,0).aprendiz" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Vinculacion','aprendiz')}}</div>
+            <div class="item">
+                Trabajador por cuenta propia <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="cuenta_propia" ng-model="vinculacionempleado(1,1).cuenta_propia" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="cuenta_propiaf" ng-model="vinculacionempleado(1,0).cuenta_propia" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Trabajador por cuenta propia <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="cuenta_propia2" ng-model="vinculacionempleado(2,1).cuenta_propia" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="cuenta_propia2f" ng-model="vinculacionempleado(2,0).cuenta_propia" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Trabajador por cuenta propia <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0"  name="cuenta_propia3" ng-model="vinculacionempleado(3,1).cuenta_propia" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="cuenta_propia3f" ng-model="vinculacionempleado(3,0).cuenta_propia" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Vinculacion','cuenta_propia')}}</div>
+            
+            
+        </div>
+        
+        <div class="card">
+            <div class="item item-divider">
+                <h2>¿Cuántos trabajadores tienen jornada laboral?</h2>
+            </div>
+            <div class="item">
+                Completo <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="tiempo_completo" ng-model="tiempoempleado(1,1).tiempo_completo" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="tiempo_completof" ng-model="tiempoempleado(1,0).tiempo_completo" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Completo <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="tiempo_completo2" ng-model="tiempoempleado(2,1).tiempo_completo" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="tiempo_completo2f" ng-model="tiempoempleado(2,0).tiempo_completo" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Completo <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="tiempo_completo3" ng-model="tiempoempleado(3,1).tiempo_completo" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="tiempo_completo3f" ng-model="tiempoempleado(3,0).tiempo_completo" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Empleo','tiempo_completo')}}</div>
+            <div class="item">
+                Tiempo parcial <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0 "name="medio_tiempo" ng-model="tiempoempleado(1,1).medio_tiempo" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="medio_tiempof" ng-model="tiempoempleado(1,0).medio_tiempo" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Tiempo parcial <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="medio_tiempo2" ng-model="tiempoempleado(2,1).medio_tiempo" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="medio_tiempo2f" ng-model="tiempoempleado(2,0).medio_tiempo" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               Tiempo parcial <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="medio_tiempo3" ng-model="tiempoempleado(3,1).medio_tiempo" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="medio_tiempo3f" ng-model="tiempoempleado(3,0).medio_tiempo" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Total: {{Total('Empleo','medio_tiempo')}}</div>
+        </div>
+        
+        <div class="card">
+            <div class="item item-divider">
+                <h2>Remuneración promedio</h2>
+            </div>
+            <div class="item">
+                <h3>Directivos</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="valor" ng-model="remuneracion(1,1).valor" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="valorf" ng-model="remuneracion(1,0).valor" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               <h3>Mandos medios</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="valor2" ng-model="remuneracion(2,1).valor" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="valor2f" ng-model="remuneracion(2,0).valor" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">
+               <h3>Operativo</h3>
+            </div>
+            <div>
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Hombres</span>
+                  <input type="number" min="0" name="valor3" ng-model="remuneracion(3,1).valor" placeholder="Hombres" ng-required="true">
+                </label>
+           
+                <label class="item item-input item-floating-label column-50">
+                  <span class="input-label" >Mujeres</span>
+                  <input type="number" min="0" name="valor3f" ng-model="remuneracion(3,0).valor" placeholder="Mujeres" ng-required="true"/>
+                </label>
+            </div>
+            <div class="item">Promedio: {{promedio()}}</div>
+        </div>
+                             
+    </div>
+    
+    <div class="card animated fadeInLeft">
+        <div class="item item-divider situr-header">
+            <h2>Número de vacantes</h2>
+        </div>
+        
+            
+        <label class="item item-input item-floating-label">
+          <span class="input-label" >Directivos</span>
+          <input type="number" min="0" name="VacanteGerencial" ng-model="empleo.VacanteGerencial" placeholder="Directivos" ng-required="true">
+        </label>
+           
+           
+        <label class="item item-input item-floating-label">
+          <span class="input-label" >Mandos medios</span>
+          <input type="number" min="0" name="VacanteAdministrativo" ng-model="empleo.VacanteAdministrativo" placeholder="Mandos medios" ng-required="true">
+        </label>
+           
+            
+        <label class="item item-input item-floating-label">
+          <span class="input-label" >Operativo</span>
+          <input type="number" min="0" name="VacanteOperativo" ng-model="empleo.VacanteOperativo" placeholder="Operativo" ng-required="true">
+        </label>
+        <div class="item">
+            Total: {{empleo.VacanteOperativo+empleo.VacanteAdministrativo+empleo.VacanteGerencial}}
+        </div>
+           
+               
+    </div>
+    
+    <!---->
+    <div class="card animated fadeInLeft" ng-show="vacantesSi()">
+        <div class="item item-divider situr-header">
+            <h2> Razón de vacantes</h2>
+        </div>
+        
+            
+        <label class="item item-input item-floating-label">
+          <span class="input-label" >Apertura de nueva sucursal(es) o ampliación de las actuales</span>
+          <input type="number" min="0" name="apertura" ng-model="empleo.Razon.apertura" placeholder="Apertura de nueva sucursal(es) o ampliación de las actuales" ng-required="true">
+        </label>
+           
+           
+        <label class="item item-input item-floating-label">
+          <span class="input-label" >Crecimiento en ventas de la empresa</span>
+          <input type="number" min="0" name="crecimiento" ng-model="empleo.Razon.crecimiento" placeholder="Crecimiento en ventas de la empresa" ng-required="true">
+        </label>
+           
+            
+        <label class="item item-input item-floating-label">
+          <span class="input-label" >Reemplazo de empleado</span>
+          <input type="number" min="0" name="remplazo" ng-model="empleo.Razon.remplazo" placeholder="Reemplazo de empleado" ng-required="true">
+        </label>
+        <div class="item">
+            Total: {{empleo.Razon.apertura+empleo.Razon.crecimiento+empleo.Razon.remplazo}}
+        </div>
+           
+               
+    </div>
+          <div class="row">
+        <div class="col col-50">
+          <a href="" class="button button-outline button-balanced ripple ripple-green button-block" >
+            Anterior
+          </a>
+        </div>
+        <div class="col col-50">
+          <button type="submit" ng-click="guardar(form)" class=" button button-balanced ripple ripple-light button-block" >
+            Guardar
+          </button>
+        </div>
+      </div>
+
+  </form>
+  
+  
+  </ion-content>
+
+  
+  
+</ion-view>

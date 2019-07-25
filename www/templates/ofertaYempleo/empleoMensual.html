@@ -1,0 +1,72 @@
+<ion-view view-title="Alojamiento mensual">
+  
+    <ion-content>
+        <form role="form" name="empleoForm" novalidate>
+
+            <div class="card animated fadeInLeft">
+                <div class="item item-divider situr-header">
+                    <h2>Empleados</h2>
+                </div>
+                
+                
+                    <div class="item">
+                        <h3>Directivos</h3>
+                    </div>
+                    <div>
+                        <label class="item item-input item-floating-label column-50">
+                          <span class="input-label" >Hombres</span>
+                          <input type="number" min="0" name="sexo" ng-model="cargo(1).hombres" placeholder="Hombres" ng-required="true">
+                        </label>
+                   
+                        <label class="item item-input item-floating-label column-50">
+                          <span class="input-label" >Mujeres</span>
+                          <input type="number" min="0" name="sexof" ng-model="cargo(1).mujeres" placeholder="Mujeres" ng-required="true"/>
+                        </label>
+                    </div>
+                    <div class="item">
+                        <h3>Mandos medios</h3>
+                    </div>
+                    <div>
+                        <label class="item item-input item-floating-label column-50">
+                          <span class="input-label" >Hombres</span>
+                          <input type="number" min="0" name="sexo2" ng-model="cargo(2).hombres" placeholder="Hombres" ng-required="true">
+                        </label>
+                   
+                        <label class="item item-input item-floating-label column-50">
+                          <span class="input-label" >Mujeres</span>
+                          <input type="number" min="0" name="sexo2f" ng-model="cargo(2).mujeres" placeholder="Mujeres" ng-required="true"/>
+                        </label>
+                    </div>
+                    <div class="item">
+                        <h3>Operativo</h3>
+                    </div>
+                    <div>
+                        <label class="item item-input item-floating-label column-50">
+                          <span class="input-label" >Hombres</span>
+                          <input type="number" min="0" class="form-control" name="sexo3" ng-model="cargo(3).hombres" placeholder="Hombres" ng-required="true">
+                        </label>
+                   
+                        <label class="item item-input item-floating-label column-50">
+                          <span class="input-label" >Mujeres</span>
+                          <input type="number" min="0" class="form-control" name="sexo3f" ng-model="cargo(3).mujeres" placeholder="Mujeres" ng-required="true"/>
+                        </label>
+                    </div>
+                    <div class="item">
+                        Total: {{cargo(1).mujeres + cargo(1).hombres + cargo(2).mujeres + cargo(2).hombres + cargo(3).mujeres + cargo(3).hombres }}
+                    </div>
+                    
+                  
+                
+           
+            </div>
+            
+            <div class="padding">
+                <button type="submit" ng-click="guardar(empleoForm)" class=" button button-balanced ripple ripple-light button-block" >
+                    Guardar
+                </button>
+            </div>
+            
+        </form>
+      
+    </ion-content>
+</ion-view>

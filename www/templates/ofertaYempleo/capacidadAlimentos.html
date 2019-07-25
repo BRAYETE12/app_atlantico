@@ -1,0 +1,132 @@
+<ion-view view-title="Capacidad restaurantes">
+  <ion-content>
+    
+    <form name="form" novalidate>
+        
+        <div class="card animated bounceInUp" >   
+          <div class="item item-divider situr-header required">
+            <h2> Capacidad del establecimiento </h2>
+          </div>
+         
+          <div class="item">
+            <ion-scroll direction="x" id="scroll-x" >
+              
+                <div class="row row-table-col" >
+                    <div class="col col-50" >
+                      ¿Cuántos platos de comida máximo se hubieran podido servir en promedio diariamente con el personal con en el que contó en el mes anterior?
+                    </div>
+                    <div class="col col-50">
+                      <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.platosMaximo.$touched) && !form.platosMaximo.$valid) }" >
+                       <input type="number" min="1" name="platosMaximo" class="form-control" ng-model="alimentos.platosMaximo" ng-required="true" placeholder="Solo números"/>
+                      </label>
+                    </div>
+                </div>
+                <div class="row row-table-col" >
+                    <div class="col col-50" >
+                      ¿Cuántos platos de comida se sirvieron efectivamente en el mes anterior?
+                    </div>
+                    <div class="col col-50">
+                      <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.platoServido.$touched) && !form.platoServido.$valid) }" >
+                       <input type="number" min="1" name="platoServido" class="form-control" ng-model="alimentos.platoServido" ng-required="true" placeholder="Solo números"/>
+                      </label>
+                    </div>
+                </div>
+                <div class="row row-table-col" >
+                    <div class="col col-50" >
+                      ¿Cuánto vale el plato de comida que más se vendió en el mes anterior? ($)
+                    </div>
+                    <div class="col col-50">
+                      <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.precioPlato.$touched) && !form.precioPlato.$valid) }" >
+                       <input type="number" min="1" name="precioPlato" class="form-control" ng-model="alimentos.precioPlato" ng-required="true" placeholder="Solo números"/>
+                      </label>
+                    </div>
+                </div>
+               
+            </ion-scroll>
+          </div>    
+        </div> 
+        
+        <div class="card animated bounceInUp" >   
+          <div class="item item-divider situr-header required">
+            <h2> Atención a visitantes no residentes en Atlántico </h2>
+          </div>
+         
+          <div class="item">
+            <ion-scroll direction="x" id="scroll-x" >
+              
+                <div class="row row-table-col" >
+                    <div class="col col-50" >
+                      ¿Qué porcentaje de sus clientes del mes anterior considera son de otras regiones fuera del Atlántico? (%)
+                    </div>
+                    <div class="col col-50">
+                      <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.porcentajeOtrasRegiones.$touched) && !form.porcentajeOtrasRegiones.$valid) }" >
+                        <input type="number" min="0" name="porcentajeOtrasRegiones" class="form-control" ng-model="alimentos.porcentajeOtrasRegiones" placeholder="Solo números"/>
+                      </label>
+                    </div>
+                </div>
+                
+            </ion-scroll>
+          </div>    
+        </div> 
+        
+        <div class="button-bar padding">
+            <a class="button button-stable" href="/#/app/caracterizacionAlimentos/{{id}}" >ANTERIOR</a>
+            <button type="submit"  class="button button-positive" ng-click="guardar(form)" >SIGUIENTE</button>
+        </div>
+        
+    </form>
+    
+  </ion-content>
+
+  <div class="popup-menu">
+    <div class="popup-menu-overlay" ng-class="{'in': menu_is_open}" ng-click="togglePopupMenu()"></div>
+    <i class="ion ion-grid popup-menu-toggle" ng-click="togglePopupMenu()" ng-class="{'out': menu_is_open}"></i>
+    <div class="popup-menu-panel" ng-class="{'in': menu_is_open}">
+
+      <a class="popup-menu-item ripple ripple-green" href="#/app/caracterizacionAlojamientos" ng-click="togglePopupMenu()">
+        <i class="ion ion-clipboard"></i>
+        <span>Caracterizacion</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/ofertaAlojamiento" ng-click="togglePopupMenu()">
+        <i class="ion ion-calculator"></i>
+        <span>Oferta</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/empleoMensual" ng-click="togglePopupMenu()">
+        <i class="ion-ios-people"></i>
+        <span>Empleo mensual</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/numeroEmpleados" ng-click="togglePopupMenu()">
+        <i class="ion ion-person-add"></i>
+        <span>N° Empleados</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/empleadosCaracterizacion" ng-click="togglePopupMenu();">
+        <i class="ion ion-briefcase"></i>
+        <span>Empleados Caracterización</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="progress-container">
+    <round-progress
+    max="100"
+    current="20"
+    color="#16469e"
+    bgcolor="#c9cdff"
+    radius="10"
+    stroke="1"
+    semi="false"
+    rounded="false"
+    clockwise="true"
+    responsive="true"
+    duration="800"
+    animation="easeInOutQuart"
+    animation-delay="2">
+
+    </round-progress>
+    <div class="progress-text">
+
+      <span class="progress-percent">20%</span>
+    </div>
+  </div>
+
+</ion-view>

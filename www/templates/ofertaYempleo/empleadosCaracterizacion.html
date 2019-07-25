@@ -1,0 +1,118 @@
+<ion-view view-title="Caracterización de empleados">
+  <ion-content>
+    <form role="form" name="form" novalidate>
+      <div class="card">
+        <div class="item item-divider situr-header required">
+          <h2>Necesidades de capacitación: ¿Hubo cargos que requerían capacitación?</h2>
+        </div>
+        <ion-radio class="ripple ripple-green" id="SiCapacitacionh" value="1" name="opt1h" ng-model="empleo.Hubo_capacitacion" ng-required="true">
+          Si
+        </ion-radio>
+        <ion-radio class="ripple ripple-green" id="NoCapacitacionh" value="0" name="opt1h" ng-model="empleo.Hubo_capacitacion" ng-required="true">
+          No
+        </ion-radio>
+      </div>
+      
+      <div class="card" ng-if="empleo.Hubo_capacitacion == 1">
+        <div class="item item-divider situr-header required">
+          <h2>¿En cuáles temas realizó la capacitación?</h2>
+        </div>
+        <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.temaCapacitacionh.$touched) && !form.temaCapacitacionh.$valid) }" >
+          <span class="input-label" >Ingrese los temas que realizó capacitación a sus empleados</span>
+          <input type="text" name="temaCapacitacionh" ng-minlength="1" ng-maxlength="150" ng-model="empleo.TemaCapacitacion" placeholder="Ingrese los temas que realizó capacitación a sus empleados" ng-required="empl.Capacitacion==1">
+        </label>
+      </div>
+      
+      <div class="card">
+        <div class="item item-divider situr-header required">
+          <h2>¿Ha realizado procesos de capacitación en su empresa?</h2>
+        </div>
+        <ion-radio class="ripple ripple-green" id="SiCapacitacion" value="1" name="opt1" ng-model="empleo.capacitacion" ng-required="true">
+          Si
+        </ion-radio>
+        <ion-radio class="ripple ripple-green" id="NoCapacitacion" value="0" name="opt1" ng-model="empleo.capacitacion" ng-required="true">
+          No
+        </ion-radio>
+      </div>
+      
+      <div class="card" ng-show="empleo.capacitacion == 1">
+        <div class="item item-divider situr-header required">
+          <h2>Tematicas desarrolladas</h2>
+        </div>
+        <div class="item">
+          <a ng-click="agregar()" class="button button-small button-outline button-balanced ripple ripple-green">
+            <i class="ion-plus"></i>
+          </a>
+        </div>
+         
+        <div class="card"  ng-repeat="tematica in empleo.tematicas">
+          <div class="item item-divider"></div>
+          <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.temaCapacitacion@{{$index}}.$touched) && !form.temaCapacitacion@{{$index}}.$valid) }" >
+            <span class="input-label" >Ingrese los temas que realizó capacitación a sus empleados</span>
+            <input type="text"  name="temaCapacitacion@{{$index}}" ng-minlength="1" ng-maxlength="250" ng-model="tematica.nombre" placeholder="Ingrese los temas que realizó capacitación a sus empleados" ng-required="empleo.capacitacion ==1">
+          </label>
+          
+          <label class="item">
+            <span class="input-label" >Realizada por la empresa	</span>
+
+            <ion-radio class="ripple ripple-green genero" id="SiCapacitacion{{$index}}" value="1" name="opt1{{$index}}" ng-model="tematica.realizada_empresa" ng-required="true">
+              Si
+            </ion-radio>
+            <ion-radio class="ripple ripple-green genero" id="NoCapacitacion{{$index}}" value="0" name="opt1{{$index}}" ng-model="tematica.realizada_empresa" ng-required="true">
+              No
+            </ion-radio> 
+          </label>
+          <div class="item">
+            <a type="button"ng-click="quitar(tematica)" class="button button-small button-outline button-assertive ripple ripple-green">
+              <i class="ion-close-round"></i>
+            </a>
+          </div>  
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="item item-divider situr-header required">
+          <h2>Dando cumplimiento a la ley de Protección de datos Personales le solicito su autorización para que SITUR Atlántico pueda contactarlo nuevamente en caso de ser necesario ¿Está usted de acuerdo?</h2>
+        </div>
+        <ion-radio class="ripple ripple-green" id="SiCapacitacion" value="1" name="autorizacion" ng-model="empleo.autorizacion" ng-required="true">
+          Si
+        </ion-radio>
+        <ion-radio class="ripple ripple-green" id="NoCapacitacion" value="0" name="autorizacion" ng-model="empleo.autorizacion" ng-required="true">
+          No
+        </ion-radio>
+      </div>
+      
+      <div class="card">
+        <div class="item item-divider situr-header required">
+          <h2>Ya para terminar, le solicito su autorización para que SITUR Atlántico comparta sus respuestas con las entidades que contrataron el proyecto si o no</h2>
+        </div>
+        <ion-radio class="ripple ripple-green" id="SiCapacitacion" value="1" name="esta_acuerdo" ng-model="empleo.esta_acuerdo" ng-required="true">
+          Si
+        </ion-radio>
+        <ion-radio class="ripple ripple-green" id="NoCapacitacion" value="0" name="esta_acuerdo" ng-model="empleo.esta_acuerdo" ng-required="true">
+          No
+        </ion-radio>
+      </div>
+      
+      <div class="card">
+        <div class="item item-divider situr-header required">
+          <h2>Por cual medio le gustaría actualizar la información</h2>
+        </div>
+        <ion-radio ng-repeat ="medio in data.actualizaciones" class="ripple ripple-green" id="SiCapacitacion" value="{{medio.id}}" name="medios_actualizacion_id" ng-model="empleo.medios_actualizacion_id" ng-required="true">
+          {{medio.nombre}}
+        </ion-radio>
+        
+      </div>
+      
+      <div class="padding">
+        <button type="submit" ng-click="guardar(form)" class=" button button-balanced ripple ripple-light button-block">
+          Guardar
+        </button>
+      </div>
+    
+    </form>
+    <br><br><br>
+  </ion-content>
+
+  
+</ion-view>

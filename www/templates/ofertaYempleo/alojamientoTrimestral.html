@@ -1,0 +1,457 @@
+<ion-view view-title="Oferta de alojamientos">
+  
+  <ion-content>
+    
+    <form role="form" name="form" novalidate>
+        
+        <div class="card animated bounceInUp">
+          <div class="item item-divider situr-header required">
+            <h2> Selecciones las modalidades de alojamiento que ofrece su establecimiento</h2>
+          </div>
+          <div class="item">
+            
+            <ion-checkbox class="ripple ripple-green" ng-model="servicios.habitacion" ng-change="resetDatos(1, servicios.habitacion)" >
+              Habitaciones
+            </ion-checkbox>
+    
+            <ion-checkbox class="ripple ripple-green" ng-model="servicios.apartamento" ng-change="resetDatos(2, servicios.apartamento)" >
+              Apartamentos
+            </ion-checkbox>
+    
+            <ion-checkbox class="ripple ripple-green" ng-model="servicios.casa" ng-change="resetDatos(3, servicios.casa)" > 
+              Casas
+            </ion-checkbox>
+    
+            <ion-checkbox class="ripple ripple-green" ng-model="servicios.cabana" ng-change="resetDatos(4, servicios.cabana)"  >
+              Cabañas
+            </ion-checkbox>
+    
+            <ion-checkbox class="ripple ripple-green" ng-model="servicios.camping" ng-change="resetDatos(5, servicios.camping)" >
+              Camping
+            </ion-checkbox>
+          </div>                      
+        </div>
+        
+        <div class="card animated bounceInUp" ng-if="servicios.habitacion">
+          <div class="item item-divider situr-header">
+            <h2>Habitaciones</h2>
+          </div>
+          <div class="item">
+            <ion-scroll direction="x" id="scroll-x" >
+              <div class="row row-table-col">
+                <div class="col col-75">Total habitaciones (Por favor no incluir habitaciones para el personal de la empresa)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.totalH.$touched) && !form.totalH.$valid) }" >
+                    <input type="number" name="totalH" class="form-control" min="0" ng-model="alojamiento.habitaciones[0].total" ng-required="servicios.habitacion" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuál es la capacidad máxima de alojamiento en personas? (Por favor no cuente las personas que pueden hospedarse en camas creadas a petición del cliente)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.capacidadMaxH.$touched) && !form.capacidadMaxH.$valid) }" >
+                    <input type="number" name="capacidadMaxH" class="form-control" min="0" ng-model="alojamiento.habitaciones[0].capacidad" ng-required="servicios.habitacion" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">Tarifa de habitación doble estándar incluido impuestos ($) en el mes</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.HabitacionTarifa.$touched) && !form.HabitacionTarifa.$valid) }" >
+                    <input name="HabitacionTarifa" id="HabitacionTarifa" class="form-control" ng-model="alojamiento.habitaciones[0].tarifa" min="1000"  type="number" ng-required="servicios.habitacion" placeholder="Valor" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántas personas realizaron Check in o ingresaron durante el mes?</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.HabitacionPersonas.$touched) && !form.HabitacionPersonas.$valid) }" >
+                    <input type="number" name="HabitacionPersonas" id="HabitacionPersonas" class="form-control" ng-model="alojamiento.habitaciones[0].numero_personas" min="1" ng-required="servicios.habitacion" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántos viajeros que ingresaron durante el mes anterior tienen residencia fuera del Atlántico? (De otros departamentos de Colombia)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.HabitacionCol.$touched) && !form.HabitacionCol.$valid) }" >
+                    <input type="number" id="HabitacionCol" name="HabitacionCol" class="form-control" ng-model="alojamiento.habitaciones[0].viajeros_locales" ng-required="servicios.habitacion" placeholder="Número" /> 
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántas habitaciones se ocuparon durante el mes? (Es la suma de habitaciones vendidas cada noche del mes)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.HabitacionOcupa.$touched) && !form.HabitacionOcupa.$valid) }" >
+                    <input type="number" name="HabitacionOcupa" id="HabitacionOcupa" class="form-control" ng-model="alojamiento.habitaciones[0].habitaciones_ocupadas" min="1" ng-required="servicios.habitacion" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Total huéspedes durante noches del mes de anterior? (Es la sumatoria de los huéspedes que se encontraban registrados cada noche del mes)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.HabitacionTotal.$touched) && !form.HabitacionTotal.$valid) }" >
+                    <input type="number" name="HabitacionTotal" id="HabitacionTotal" class="form-control" ng-model="alojamiento.habitaciones[0].total_huespedes" min="1" ng-required="servicios.habitacion" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              
+            </ion-scroll>
+    
+          </div>                      
+        </div>
+    
+        <div class="card animated bounceInUp" ng-if="servicios.apartamento">
+          <div class="item item-divider situr-header">
+            <h2>Apartamentos</h2>
+          </div>
+          <div class="item">
+            <ion-scroll direction="x" id="scroll-x" >
+              <div class="row row-table-col">
+                <div class="col col-75">Total apartamentos (Por favor no incluir apartamentos para el personal de la empresa)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.totalH.$touched) && !form.totalH.$valid) }" >
+                    <input type="number" name="totalH" class="form-control" min="0" ng-model="alojamiento.apartamentos[0].total" ng-required="servicios.apartamento" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+               <div class="row row-table-col">
+                <div class="col col-75">¿Cuál es la capacidad máxima de alojamiento en personas? (Por favor no cuente las personas que pueden hospedarse en camas creadas a petición del cliente)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.capacidadMaxA.$touched) && !form.capacidadMaxA.$valid) }" >
+                    <input type="number" name="capacidadMaxA" class="form-control" min="1" ng-model="alojamiento.apartamentos[0].capacidad" ng-required="servicios.apartamento" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuál fue la tarifa de un apartamento de acomodación doble incluido impuesto ($) en el mes?</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.ApartamentosTarifa.$touched) && !form.ApartamentosTarifa.$valid) }" >
+                    <input name="ApartamentosTarifa" id="ApartamentosTarifa" class="form-control" ng-model="alojamiento.apartamentos[0].tarifa" min="1000" type="number" ng-required="servicios.apartamento" placeholder="Vaalor"/> 
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántas personas realizaron Check in o ingresaron durante el mes?</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.ApartamentosPersonas.$touched) && !form.ApartamentosPersonas.$valid) }" >
+                    <input type="number" name="ApartamentosPersonas" id="ApartamentosPersonas" class="form-control" ng-model="alojamiento.apartamentos[0].viajeros" min="1" ng-required="servicios.apartamento" placeholder="Número"/> 
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántos viajeros que ingresaron durante el mes anterior tienen residencia fuera del Atlántico? (De otros departamentos de Colombia)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.ApartamentosCol.$touched) && !form.ApartamentosCol.$valid) }" >
+                    <input type="number" id="ApartamentosCol" name="ApartamentosCol" class="form-control" ng-model="alojamiento.apartamentos[0].viajeros_colombianos" ng-required="servicios.apartamento" placeholder="Número" /> 
+                  </label> <br> 
+                </div>
+              </div>
+              
+              <div class="row row-table-col">
+                <div class="col col-75">¿Con cuántas apartamentos se ocuparon durante el mes?  (Es la suma de apartamentos vendidos cada noche del mes) Si usted vendió el mismo apartamento por 15 días, entonces, el apartamento fue ocupado 15 veces.</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.ApartamentosCamas.$touched) && !form.ApartamentosCamas.$valid) }" >
+                    <input type="number" name="ApartamentosCamas" id="ApartamentosCamas" class="form-control" ng-model="alojamiento.apartamentos[0].capacidad_ocupada" min="1" ng-required="servicios.apartamento" placeholder="Número" /> 
+                  </label> <br> 
+                </div>
+              </div>
+              
+              <div class="row row-table-col">
+                <div class="col col-75">¿Total huéspedes durante noches del mes de anterior? (Es la sumatoria de los huéspedes que se encontraban registrados cada noche del mes)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.ApartamentosTotal.$touched) && !form.ApartamentosTotal.$valid) }" >
+                    <input type="number" name="ApartamentosTotal" id="ApartamentosTotal" class="form-control" ng-model="alojamiento.apartamentos[0].total_huespedes" min="1" ng-required="servicios.apartamento" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+            </ion-scroll>
+    
+          </div>                      
+        </div>
+    
+        <div class="card animated bounceInUp" ng-if="servicios.casa">
+          <div class="item item-divider situr-header">
+            <h2>Casas</h2>
+          </div>
+          <div class="item">
+            <ion-scroll direction="x" id="scroll-x" >
+              <div class="row row-table-col">
+                <div class="col col-75">Total casas (Por favor no incluir casas para el personal de la empresa)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.numeroCasas.$touched) && !form.numeroCasas.$valid) }" >
+                    <input type="number" name="numeroCasas" class="form-control" min="0" ng-model="alojamiento.casas[0].total" ng-required="servicios.casa" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuál es la capacidad máxima de alojamiento en personas? (Por favor no cuente las personas que pueden hospedarse en camas creadas a petición del cliente)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.capacidadMaxC.$touched) && !form.capacidadMaxC.$valid) }" >
+                    <input type="number" name="capacidadMaxC" class="form-control" min="1" ng-model="alojamiento.casas[0].capacidad" ng-required="servicios.casas" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">Número promedio de personas por casa</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.promedioC.$touched) && !form.promedioC.$valid) }" >
+                    <input type="number" name="promedioC" class="form-control" min="0" ng-model="alojamiento.casas[0].promedio" ng-required="servicios.casa" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">Tarifa de la casa incluido impuestos ($) en el mes</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CasaTarifa.$touched) && !form.CasaTarifa.$valid) }" >
+                    <input name="CasaTarifa" id="CasaTarifa" class="form-control" ng-model="alojamiento.casas[0].tarifa" min="1000" type="number" ng-required="servicios.casas" placeholder="Valoor"  /> 
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántas personas realizaron Check in o ingresaron durante el mes?</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CasaPersonas.$touched) && !form.CasaPersonas.$valid) }" >
+                    <input type="number" name="CasaPersonas" id="CasaPersonas" class="form-control" ng-model="alojamiento.casas[0].viajeros" min="1" ng-required="servicios.casas" placeholder="Número"  />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántos viajeros que ingresaron durante el mes anterior tienen residencia fuera del Atlántico? (De otros departamentos de Colombia)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CasaCol.$touched) && !form.CasaCol.$valid) }" >
+                   <input type="number" id="CasaCol" name="CasaCol" class="form-control" ng-model="alojamiento.casas[0].viajeros_colombia" ng-required="servicios.casas" placeholder="Número" />  
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántas casas se ocuparon durante el mes? (Es la suma de casas vendidas cada noche del mes) Si usted vendió la misma casa por 15 días, entonces, la casa fue ocupada 15 veces.</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CasaCapacidad.$touched) && !form.CasaCapacidad.$valid) }" >
+                    <input type="number" name="CasaCapacidad" id="CasaCapacidad" class="form-control" ng-model="alojamiento.casas[0].capacidad_ocupadas" min="1" ng-required="servicios.casas" placeholder="Número" /> 
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Total huéspedes durante noches del mes de anterior? (Es la sumatoria de los huéspedes que se encontraban registrados cada noche del mes)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CasaTotal.$touched) && !form.CasaTotal.$valid) }" >
+                    <input type="number" name="CasaTotal" id="CasaTotal" class="form-control" ng-model="alojamiento.casas[0].total_huespedes" min="1" ng-required="servicios.casas" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+            </ion-scroll>
+    
+          </div>                      
+        </div>
+    
+        <div class="card animated bounceInUp" ng-if="servicios.cabana">
+          <div class="item item-divider situr-header">
+            <h2>Cabañas</h2>
+          </div>
+          <div class="item">
+            <ion-scroll direction="x" id="scroll-x" >
+              <div class="row row-table-col">
+                <div class="col col-75">Total cabañas (Por favor no incluir cabañas para el personal de la empresa) </div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.numeroCab.$touched) && !form.numeroCab.$valid) }" >
+                    <input type="number" name="numeroCab" class="form-control" min="0" ng-model="alojamiento.cabanas[0].total" ng-required="servicios.cabana" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuál es la capacidad máxima de alojamiento en personas? (Por favor no cuente las personas que pueden hospedarse en camas creadas a petición del cliente) </div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.capacidadMaxCb.$touched) && !form.capacidadMaxCb.$valid) }" >
+                    <input type="number" name="capacidadMaxCb" class="form-control" min="0" ng-model="alojamiento.cabanas[0].capacidad" ng-required="servicios.cabana" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">Número promedio de personas por cabaña </div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.promedioP.$touched) && !form.promedioP.$valid) }" >
+                    <input type="number" name="promedioP" class="form-control" min="0" ng-model="alojamiento.cabanas[0].promedio" ng-required="servicios.cabana" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">Tarifa de la cabaña incluido impuestos ($) en el mes</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CabTarifa.$touched) && !form.CabTarifa.$valid) }" >
+                    <input name="CabTarifa" id="CabTarifa" class="form-control" ng-model="alojamiento.cabanas[0].tarifa" min="1000" type="number" ng-required="ervicios.cabana" placeholder="Número" />  
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántas personas realizaron Check in o ingresaron durante el mes?</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CabPersonas.$touched) && !form.CabPersonas.$valid) }" >
+                    <input type="number" name="CabPersonas" id="CabPersonas" class="form-control" ng-model="alojamiento.cabanas[0].viajeros" min="1" ng-required="ervicios.cabana" placeholder="Número" /> 
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántos viajeros que ingresaron durante el mes anterior tienen residencia fuera del Atlántico? (De otros departamentos de Colombia)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CabCol.$touched) && !form.CabCol.$valid) }" >
+                    <input type="number" id="CabCol" name="CabCol" class="form-control" ng-model="alojamiento.cabanas[0].viajeros_colombia" ng-required="ervicios.cabana" placeholder="Número" /> 
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75"> ¿Cuántas cabañas se ocuparon durante el mes? (Es la suma de cabañas vendidas cada noche del mes) Si usted vendió la misma cabaña por 15 días, entonces, la cabaña fue ocupada 15 veces.</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CabaniaCapacidad.$touched) && !form.CabaniaCapacidad.$valid) }" >
+                    <input type="number" name="CabaniaCapacidad" id="CabaniaCapacidad" class="form-control" ng-model="alojamiento.cabanas[0].capacidad_ocupada" min="1" ng-required="ervicios.cabana" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Total huéspedes durante noches del mes de anterior? (Es la sumatoria de los huéspedes que se encontraban registrados cada noche del mes)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CabTotal.$touched) && !form.CabTotal.$valid) }" >
+                    <input type="number" name="CabTotal" id="CabTotal" class="form-control" ng-model="alojamiento.cabanas[0].total_huespedes" min="1" ng-required="ervicios.cabana" placeholder="Número" /> 
+                  </label> <br> 
+                </div>
+              </div>
+            </ion-scroll>
+    
+          </div>                      
+        </div>
+    
+        <div class="card animated bounceInUp" ng-if="servicios.camping">
+          <div class="item item-divider situr-header">
+            <h2>Camping</h2>
+          </div>
+          <div class="item">
+            <ion-scroll direction="x" id="scroll-x" >
+              <div class="row row-table-col">
+                <div class="col col-75">Área del terreno para Camping? (m2) </div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.areaC.$touched) && !form.areaC.$valid) }" >
+                    <input type="number" name="areaC" class="form-control" min="0" ng-model="alojamiento.campings[0].area" ng-required="servicios.camping" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">Total parcelas (N° espacios para carpas)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.totalP.$touched) && !form.totalP.$valid) }" >
+                    <input type="number" name="totalP" class="form-control" min="0" ng-model="alojamiento.campings[0].total_parcelas" ng-required="servicios.camping" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">Capacidad en número de personas</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.capacidadMaxCg.$touched) && !form.capacidadMaxCg.$valid) }" >
+                    <input type="number" name="capacidadMaxCg" class="form-control" min="0" ng-model="alojamiento.campings[0].capacidad" ng-required="servicios.camping" placeholder="Número" />
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">Tarifa del camping incluido impuestos ($) en el mes </div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CamTarifa.$touched) && !form.CamTarifa.$valid) }" >
+                   <input name="CamTarifa" id="CamTarifa" class="form-control" ng-model="alojamiento.campings[0].tarifa" min="1000" type="number" ng-required="servicios.camping" placeholder="Valor"/>
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántos viajeros se hospedaron durante el mes?</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CamPersonas.$touched) && !form.CamPersonas.$valid) }" >
+                    <input type="number" name="CamPersonas" id="CamPersonas" class="form-control" ng-model="alojamiento.campings[0].viajeros" min="1" ng-required="servicios.camping" placeholder="Número" /> 
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántos viajeros que ingresaron durante el mes de junio tienen residencia fuera del Atlántico? </div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CamExtra.$touched) && !form.CamExtra.$valid) }" >
+                    <input type="number" name="CamExtra" id="CamExtra" class="form-control" ng-model="alojamiento.campings[0].viajeros_extranjeros" min="1" ng-required="servicios.camping" placeholder="Número" /> 
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Cuántas parcelas (N° de espacios para carpas-casas rodantes) se ocuparon durante el mes? (Es la suma de espacios vendidos cada noche del mes) Si usted vendió solo un espacio por 15 días, </div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CampingCapacidad.$touched) && !form.CampingCapacidad.$valid) }" >
+                    <input type="number" name="CampingCapacidad" id="CampingCapacidad" class="form-control" ng-model="alojamiento.campings[0].capacidad_ocupada" min="1" ng-required="servicios.camping" placeholder="Número" /> 
+                  </label> <br> 
+                </div>
+              </div>
+              <div class="row row-table-col">
+                <div class="col col-75">¿Total huéspedes durante noches del mes de anterior? (Es la sumatoria de los huéspedes que se encontraban registrados cada noche del mes)</div>
+                <div class="col col-50" >
+                  <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.CamTotal.$touched) && !form.CamTotal.$valid) }" >
+                    <input type="number" name="CamTotal" id="CamTotal" class="form-control" ng-model="alojamiento.campings[0].capacidad_ocupada" min="1" ng-required="servicios.camping" placeholder="Número"  /> 
+                  </label> <br> 
+                </div>
+              </div>
+              
+            </ion-scroll>
+          </div>                      
+        </div>
+        
+        <div class="button-bar padding">
+            <input type="submit" class="button button-balanced ripple ripple-green" ng-click="guardar(form)" value="Siguiente" />
+        </div>
+      
+    </form>
+    
+  </ion-content>
+
+  <div class="popup-menu">
+    <div class="popup-menu-overlay" ng-class="{'in': menu_is_open}" ng-click="togglePopupMenu()"></div>
+    <i class="ion ion-grid popup-menu-toggle" ng-click="togglePopupMenu()" ng-class="{'out': menu_is_open}"></i>
+    <div class="popup-menu-panel" ng-class="{'in': menu_is_open}">
+
+      <a class="popup-menu-item ripple ripple-green" href="#/app/caracterizacionAlojamientos" ng-click="togglePopupMenu()">
+        <i class="ion ion-clipboard"></i>
+        <span>Caracterizacion</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/ofertaAlojamiento" ng-click="togglePopupMenu()">
+        <i class="ion ion-calculator"></i>
+        <span>Oferta</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/empleoMensual" ng-click="togglePopupMenu()">
+        <i class="ion-ios-people"></i>
+        <span>Empleo mensual</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/numeroEmpleados" ng-click="togglePopupMenu()">
+        <i class="ion ion-person-add"></i>
+        <span>N° Empleados</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/empleadosCaracterizacion" ng-click="togglePopupMenu();">
+        <i class="ion ion-briefcase"></i>
+        <span>Empleados Caracterización</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="progress-container">
+    <round-progress
+    max="100"
+    current="50"
+    color="#16469e"
+    bgcolor="#c9cdff"
+    radius="10"
+    stroke="1"
+    semi="false"
+    rounded="false"
+    clockwise="true"
+    responsive="true"
+    duration="800"
+    animation="easeInOutQuart"
+    animation-delay="2">
+
+    </round-progress>
+    <div class="progress-text">
+
+      <span class="progress-percent">50%</span>
+    </div>
+  </div>
+
+</ion-view>

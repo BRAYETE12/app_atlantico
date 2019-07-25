@@ -1,0 +1,45 @@
+<ion-view view-title="Encuestas oferta y empleo">
+  <div class="bar bar-subheader bar-custom item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="text" placeholder="Buscar encuesta..." ng-model="search">
+    </label>
+    <button class="button button-clear  button-has-search" ng-if="search">
+      <i class="ion-close"></i>
+      <span>Cancelar</span>
+    </button>
+  </div>
+  <ion-content class="has-subheader">
+    <div class="card">   
+      <div class="item" >
+        <ion-scroll direction="x" id="scroll-x">
+          <div class="row row-table">
+            <div class="col col-25">Id</div>
+            <div class="col col-25">Codigo</div>
+            <div class="col col-25">Nombre</div>
+            <div class="col col-25">Tipo</div>
+            <div class="col col-25">Categoria</div>
+            <div class="col col-25">Mes</div>
+            <div class="col col-25">Año</div>
+            <div class="col col-25">Estado</div>
+            <div class="col col-25"></div>
+          </div>
+          <div class="row row-table-col" ng-repeat="item in encuestas |filter:search">
+            <div class="col col-25">{{item.id}}</div>
+            <div class="col col-25">{{item.codigo}}</div>
+            <div class="col col-25">{{item.razon_social}}</div>
+            <div class="col col-25">{{item.tipo}}</div>
+            <div class="col col-25">{{item.categoria}}</div>
+            <div class="col col-25">{{item.mes}}</div>
+            <div class="col col-25">{{item.anio}}</div>
+            <div class="col col-25">{{item.estado}}</div>
+            <div class="col col-25">
+              <a class="button button-small button-outline button-stable ripple ripple-green" href ng-click="redireccionar(1,item)" ><i class="ion-edit"></i></a>
+              <a class="button button-small button-outline button-balanced ripple ripple-green" href href ng-click="redireccionar(2,item)" ><i class="ion-eye"></i></a>
+            </div>
+          </div>
+        </ion-scroll>
+      </div> 
+    </div> 
+  </ion-content>  
+</ion-view>

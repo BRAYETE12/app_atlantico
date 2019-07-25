@@ -1,0 +1,104 @@
+
+<ion-view view-title="Servicio de transporte especial">
+  <ion-content>
+    
+    <form name="form" novalidate>
+        
+        <div class="card animated animated bounceInUp">   
+          <div class="item item-divider situr-header required">
+            <h2>¿Cuántos vehículos estuvieron disponibles para el servicio de transporte de pasajeros en el mes anterior?</h2>
+          </div>
+            <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.vehiculosTerrestre.$touched) && !form.vehiculosTerrestre.$valid) }" >
+            <input class="form-control" type="number" id="vehiculosTerrestre" name="vehiculosTerrestre" ng-model="transporte.VehiculosTerrestre" ng-required="true" placeholder="Número">
+          </label> <br>     
+        </div>
+        <div class="card animated animated bounceInUp">   
+          <div class="item item-divider situr-header required">
+            <h2>¿Cuál fue la capacidad para transportar pasajeros en el mes anterior?</h2>
+          </div>
+            <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.personasVehiculosTerrestre.$touched) && !form.personasVehiculosTerrestre.$valid) }" >
+            <input class="form-control" type="number" id="personasVehiculosTerrestre" name="personasVehiculosTerrestre" ng-model="transporte.PersonasVehiculosTerrestre" ng-required="true" placeholder="Número">
+          </label> <br>     
+        </div>
+        <div class="card animated animated bounceInUp">   
+          <div class="item item-divider situr-header required">
+            <h2>¿Cuál fue la tarifa promedio ($) del servicio del transporte en el mes anterior?</h2>
+          </div>
+            <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.tarifaTerrestre.$touched) && !form.tarifaTerrestre.$valid) }" >
+            <input class="form-control" type="number" id="tarifaTerrestre" name="tarifaTerrestre" ng-model="transporte.TarifaTerrestre" min="1000" ng-required="true" placeholder="Valor">  
+          </label> <br>     
+        </div>
+        <div class="card animated animated bounceInUp">   
+          <div class="item item-divider situr-header required">
+            <h2>¿Cuántos pasajeros movilizó en el mes anterior?</h2>
+          </div>
+            <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.totalTerrestre.$touched) && !form.totalTerrestre.$valid) }" >
+            <input class="form-control" type="number" id="totalTerrestre" name="totalTerrestre" ng-model="transporte.TotalTerrestre" ng-required="true" placeholder="Número"> 
+          </label> <br>     
+        </div>
+        
+        
+        <div class="button-bar padding">
+            <input type="submit" class="button button-balanced ripple ripple-green" ng-click="guardar(form)" value="Siguiente" />
+        </div>
+
+    </form>
+    
+    
+    
+    
+    <br><br><br>
+  </ion-content>
+
+  <div class="popup-menu">
+    <div class="popup-menu-overlay" ng-class="{'in': menu_is_open}" ng-click="togglePopupMenu()"></div>
+    <i class="ion ion-grid popup-menu-toggle" ng-click="togglePopupMenu()" ng-class="{'out': menu_is_open}"></i>
+    <div class="popup-menu-panel" ng-class="{'in': menu_is_open}">
+
+      <a class="popup-menu-item ripple ripple-green" href="#/app/caracterizacionAlojamientos" ng-click="togglePopupMenu()">
+        <i class="ion ion-clipboard"></i>
+        <span>Caracterizacion</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/ofertaAlojamiento" ng-click="togglePopupMenu()">
+        <i class="ion ion-calculator"></i>
+        <span>Oferta</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/empleoMensual" ng-click="togglePopupMenu()">
+        <i class="ion-ios-people"></i>
+        <span>Empleo mensual</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/numeroEmpleados" ng-click="togglePopupMenu()">
+        <i class="ion ion-person-add"></i>
+        <span>N° Empleados</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/empleadosCaracterizacion" ng-click="togglePopupMenu();">
+        <i class="ion ion-briefcase"></i>
+        <span>Empleados Caracterización</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="progress-container">
+    <round-progress
+    max="100"
+    current="20"
+    color="#16469e"
+    bgcolor="#c9cdff"
+    radius="10"
+    stroke="1"
+    semi="false"
+    rounded="false"
+    clockwise="true"
+    responsive="true"
+    duration="800"
+    animation="easeInOutQuart"
+    animation-delay="2">
+
+    </round-progress>
+    <div class="progress-text">
+
+      <span class="progress-percent">20%</span>
+    </div>
+  </div>
+
+</ion-view>

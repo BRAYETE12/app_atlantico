@@ -1,0 +1,46 @@
+<ion-view view-title="PROVEEDORES DE OFERTA Y EMPLEO">
+  <div class="bar bar-subheader bar-custom item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="text" placeholder="Buscar encuesta..." ng-model="search">
+    </label>
+    <button class="button button-clear  button-has-search" ng-if="search">
+      <i class="ion-close"></i>
+      <span>Cancelar</span>
+    </button>
+  </div>
+  <ion-content class="has-subheader">
+    <div class="card">   
+      <div class="item" >
+        
+        <div class="button-bar">
+          <a class="button button-positive" ng-click="cargarDatosOffline()" >Cargar datos offline</a>
+          <a class="button button-balanced" ng-click="guardarEncuestasOffline()" >Guardar encuesta offline</a>
+        </div>
+        
+        <ion-scroll direction="x" id="scroll-x">
+          <div class="row row-table">
+            <div class="col col-10"></div>
+            <div class="col col-25">RNT</div>
+            <div class="col col-50">Nombre proveedor</div>
+            <div class="col col-50">Categoría</div>
+            <div class="col col-50">Tipo</div>
+            <div class="col col-50">Contacto</div>
+            <div class="col col-25"></div>
+          </div>
+          <div class="row row-table-col" ng-repeat="p in proveedores |filter:search">
+            <div class="col col-10">{{$index+1}}</div>
+            <div class="col col-25">{{p.rnt}}</div>
+            <div class="col col-50">{{p.razon_social}}</div>
+            <div class="col col-50">{{p.categoria}}</div>
+            <div class="col col-50">{{p.subcategoria}}</div>
+            <div class="col col-50">{{p.email}}</div>
+            <div class="col col-25">
+              <a class="button button-small button-outline button-stable ripple ripple-green" ng-click="redireccionar(1,p.id)" ><i class="ion-edit"></i></a>
+              <a class="button button-small button-outline button-stable ripple ripple-green" ng-click="redireccionar(2,p.id)" ><i class="ion-edit"></i></a>
+            </div>
+          </div>
+        </ion-scroll>
+      </div> 
+  </ion-content>  
+</ion-view>

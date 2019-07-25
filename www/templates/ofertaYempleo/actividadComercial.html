@@ -1,0 +1,143 @@
+<ion-view view-title="Actividad Comercial">
+  <ion-content>
+    
+    <form name="form" novalidate>
+        
+        
+        <div class="card animated bounceInUp">   
+            <div class="item item-divider situr-header required">
+               <h2>Nombre del contacto</h2>
+            </div>
+    
+                <div class="row row-table-col">
+                    <div class="col" >
+                        <label class="item item-input item-floating-label" ng-class="{true:'form-group has-error has-feedback',false:'form-group'}[(form.$submitted || form.nombre.$touched) && form.nombre.$error.required]">
+                            <span class="input-label" >Nombre del contacto</span>
+                            <input type="text" class="form-control" name="nombre" id="nombre" ng-model="actividad.nombre" maxlength="255" ng-required="true" placeholder="Nombre del contacto" />
+                            <span class="glyphicon glyphicon-exclamation-sign form-control-feedback" aria-hidden="true" ng-if="(form.$submitted || form.nombre.$touched) && form.nombre.$error.required "></span>
+                        </label>   
+                    </div>
+                </div>
+                <div class="row row-table-col">
+                    <div class="col" >
+                        <label class="item item-input item-floating-label" ng-class="{true:'form-group has-error has-feedback',false:'form-group'}[(form.$submitted || form.cargo.$touched) && form.cargo.$error.required]" >
+                            <span class="input-label" >Cargo</span>
+                            <input type="text" class="form-control" name="cargo" id="cargo" ng-model="actividad.cargo"  maxlength="255" ng-required="true" placeholder="Cargo" />
+                            <span class="glyphicon glyphicon-exclamation-sign form-control-feedback" aria-hidden="true" ng-if="(form.$submitted || form.cargo.$touched) && form.cargo.$error.required "></span>
+                        </label> 
+                    </div>
+                </div>
+                <div class="row row-table-col">
+                    <div class="col" >
+                        <label class="item item-input item-floating-label" ng-class="{true:'form-group has-error has-feedback',false:'form-group'}[(form.$submitted || form.email.$touched) && (form.email.$error.email)]" >
+                            <span class="input-label" >Email</span>
+                            <input type="email" class="form-control" name="email" id="email" ng-model="actividad.email"  maxlength="255"   placeholder="Email"/>
+                            <span class="glyphicon glyphicon-exclamation-sign form-control-feedback" aria-hidden="true" ng-if="(form.$submitted || form.email.$touched) && (form.email.$error.email)"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row row-table-col">
+                    <div class="col" >
+                        <label class="item item-input item-select item-floating-label" >
+                            <span class="input-label" >Seleccione un encuestador</span>
+                            <select class="form-control" id="inputDepartamentoResidencia" name="encuestador" ng-model="actividad.Encuestador" ng-required="true">
+                                <option value="" disabled>Seleccione un encuestador</option>
+                                <option ng-repeat="item in encuestadores" value="{{item.id}}">@{{item.user.username}}</option>
+                            </select>
+                            <!--P4P10Alert1. El campo Barrio de residencia es requerido-->
+                            <span ng-show="form.$submitted || form.barrio.$touched">
+                                <span class="label label-danger" ng-show="form.encuestador.$error.required">*El campo es requerido</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+       
+        </div> 
+        
+       <div class="card animated animated bounceInUp">   
+          <div class="item item-divider situr-header required">
+            <h2> ¿El establecimiento tuvo actividad comercial?</h2>
+          </div>
+            
+            <ion-list ng-class="{ 'error' : ( (form.$submitted || form.Comercial.$touched) && !form.Comercial.$valid) }" >
+              <ion-radio name="Comercial" ng-required="true" ng-model="actividad.Comercial" ng-value="1" >Si</ion-radio>
+              <ion-radio name="Comercial" ng-required="true" ng-model="actividad.Comercial" ng-value="0" >No</ion-radio>
+            </ion-list>
+                     
+        </div>
+        
+        <div class="card animated bounceInUp" ng-if="actividad.Comercial==1">   
+          <div class="item item-divider situr-header required">
+            <h2> ¿Cúantos días en el mes?</h2>
+          </div>
+          <label class="item item-input item-floating-label" ng-class="{ 'error' : ( (form.$submitted || form.NumeroDias.$touched) && !form.NumeroDias.$valid) }" >
+            <span class="input-label" >Número de días</span>
+            <input type="number" name="NumeroDias" placeholder="Número de días" ng-model="actividad.NumeroDias"  min="1" max="31" required>
+          </label> <br>      
+        </div> 
+        
+        <div class="button-bar padding">
+            <a href="#/app/listadoEncuestasSinLLenar/{{actividad.Sitio}}" class="button button-assertive ripple ripple-green">Anterior</a>
+            <input type="submit" class="button button-balanced ripple ripple-green" ng-click="guardar(form)" value="Siguiente" />
+        </div>
+
+    </form>
+    
+    
+    
+    
+    <br><br><br>
+  </ion-content>
+
+  <div class="popup-menu">
+    <div class="popup-menu-overlay" ng-class="{'in': menu_is_open}" ng-click="togglePopupMenu()"></div>
+    <i class="ion ion-grid popup-menu-toggle" ng-click="togglePopupMenu()" ng-class="{'out': menu_is_open}"></i>
+    <div class="popup-menu-panel" ng-class="{'in': menu_is_open}">
+
+      <a class="popup-menu-item ripple ripple-green" href="#/app/caracterizacionAlojamientos" ng-click="togglePopupMenu()">
+        <i class="ion ion-clipboard"></i>
+        <span>Caracterizacion</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/ofertaAlojamiento" ng-click="togglePopupMenu()">
+        <i class="ion ion-calculator"></i>
+        <span>Oferta</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/empleoMensual" ng-click="togglePopupMenu()">
+        <i class="ion-ios-people"></i>
+        <span>Empleo mensual</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/numeroEmpleados" ng-click="togglePopupMenu()">
+        <i class="ion ion-person-add"></i>
+        <span>N° Empleados</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/empleadosCaracterizacion" ng-click="togglePopupMenu();">
+        <i class="ion ion-briefcase"></i>
+        <span>Empleados Caracterización</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="progress-container">
+    <round-progress
+    max="100"
+    current="20"
+    color="#16469e"
+    bgcolor="#c9cdff"
+    radius="10"
+    stroke="1"
+    semi="false"
+    rounded="false"
+    clockwise="true"
+    responsive="true"
+    duration="800"
+    animation="easeInOutQuart"
+    animation-delay="2">
+
+    </round-progress>
+    <div class="progress-text">
+
+      <span class="progress-percent">20%</span>
+    </div>
+  </div>
+
+</ion-view>

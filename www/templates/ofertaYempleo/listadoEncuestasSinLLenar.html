@@ -1,0 +1,34 @@
+<ion-view view-title="Encuestas oferta y empleo">
+  <div class="bar bar-subheader bar-custom item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="text" placeholder="Buscar encuesta..." ng-model="search">
+    </label>
+    <button class="button button-clear  button-has-search" ng-if="search">
+      <i class="ion-close"></i>
+      <span>Cancelar</span>
+    </button>
+  </div>
+  <ion-content class="has-subheader">
+    <div class="card">
+      <div class="item" >
+        
+          <div class="row row-table">
+            <div class="col col-35">Mes</div>
+            <div class="col col-35">Año</div>
+            <div class="col col-25"></div>
+          </div>
+          <div class="row row-table-col" ng-repeat="item in encuestas |filter:search">
+            <div class="col col-35">{{item.mes}}</div>
+            <div class="col col-35">{{item.anio}}</div>
+            <div class="col col-25">
+              <a class="button button-small  button-outline button-stable ripple ripple-green" ng-click="redireccionar(item)" >
+                LLenar  
+              </a>
+            </div>
+          </div>
+       
+      </div> 
+    </div> 
+  </ion-content>  
+</ion-view>

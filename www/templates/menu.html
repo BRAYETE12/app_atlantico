@@ -1,0 +1,32 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-dark bar-custom">
+      <!--<ion-nav-back-button>
+      </ion-nav-back-button>
+      -->
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon ripple ripple-light" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+
+      <!--<ion-nav-buttons side="right">
+        <button class="button button-icon ion-more ripple ripple-light" ng-click="popover.show($event)"></button>
+      </ion-nav-buttons>-->
+
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <div class="header-side">
+      <span class="icon-container"><i class="icon ion-android-person"></i></span>
+      <span class="name-user">Administrador Admin</span>
+      <span class="role-user">Administrador</span>
+    </div>
+    <ion-content ng-controller="SideMenuCtrl" class="menues has-header-side">
+      <ion-list>      
+        <ionic-sidemenu tree="tree" class="sidemenus"></ionic-sidemenu>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

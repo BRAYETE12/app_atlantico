@@ -1,0 +1,91 @@
+<ion-view view-title="Oferta agencias viajes">
+  <ion-content>
+    
+    <form name="form" novalidate>
+        
+        <div class="card animated bounceInUp" >   
+          <div class="item item-divider situr-header required">
+            <h2> ¿Qué tipo de servicios presta la agencia de viajes?</h2>
+          </div>
+          <ion-list>
+            <ion-checkbox ng-repeat="servicio in servicios" name="actividad" ng-model="servicio.check" ng-checked="{{servicio.check}}" ng-click="checklist(servicio.id, servicio.check)" >
+               {{servicio.nombre}}
+            </ion-checkbox>
+            <span ng-if="(encuesta.TipoServicios.indexOf(5) != -1)" ng-class="{ 'error' : ( (form.$submitted || form.otro.$touched) && !form.otro.$valid) }" >
+              <input type="text" class="form-control" name="otro" ng-model="encuesta.Otro" placeholder="Ingrese otro servicio" ng-required="true" /> 
+            </span>
+          </ion-list>
+        </div> 
+        
+        <div class="card animated animated bounceInUp">   
+          <div class="item item-divider situr-header required">
+            <h2> ¿La Agencia ofrece planes turísticos con destino Atlántico?</h2>
+          </div>
+            
+            <ion-list ng-class="{ 'error' : ( (form.$submitted || form.Planes.$touched) && !form.Planes.$valid) }" >
+              <ion-radio name="Planes" ng-required="true" ng-model="encuesta.Planes" ng-value="1" >Si</ion-radio>
+              <ion-radio name="Planes" ng-required="true" ng-model="encuesta.Planes" ng-value="0" >No</ion-radio>
+            </ion-list>
+                     
+        </div>
+        
+        <div class="button-bar padding">
+            <button type="submit"  class="button button-positive" ng-click="guardar(form)" >Siguiente</button>
+        </div>
+        
+    </form>
+    
+  </ion-content>
+
+  <div class="popup-menu">
+    <div class="popup-menu-overlay" ng-class="{'in': menu_is_open}" ng-click="togglePopupMenu()"></div>
+    <i class="ion ion-grid popup-menu-toggle" ng-click="togglePopupMenu()" ng-class="{'out': menu_is_open}"></i>
+    <div class="popup-menu-panel" ng-class="{'in': menu_is_open}">
+
+      <a class="popup-menu-item ripple ripple-green" href="#/app/caracterizacionAlojamientos" ng-click="togglePopupMenu()">
+        <i class="ion ion-clipboard"></i>
+        <span>Caracterizacion</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/ofertaAlojamiento" ng-click="togglePopupMenu()">
+        <i class="ion ion-calculator"></i>
+        <span>Oferta</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/empleoMensual" ng-click="togglePopupMenu()">
+        <i class="ion-ios-people"></i>
+        <span>Empleo mensual</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/numeroEmpleados" ng-click="togglePopupMenu()">
+        <i class="ion ion-person-add"></i>
+        <span>N° Empleados</span>
+      </a>
+      <a class="popup-menu-item ripple ripple-green" href="#/app/empleadosCaracterizacion" ng-click="togglePopupMenu();">
+        <i class="ion ion-briefcase"></i>
+        <span>Empleados Caracterización</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="progress-container">
+    <round-progress
+    max="100"
+    current="20"
+    color="#16469e"
+    bgcolor="#c9cdff"
+    radius="10"
+    stroke="1"
+    semi="false"
+    rounded="false"
+    clockwise="true"
+    responsive="true"
+    duration="800"
+    animation="easeInOutQuart"
+    animation-delay="2">
+
+    </round-progress>
+    <div class="progress-text">
+
+      <span class="progress-percent">20%</span>
+    </div>
+  </div>
+
+</ion-view>
